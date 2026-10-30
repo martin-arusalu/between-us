@@ -29,6 +29,7 @@ try {
   execFileSync('gh', ['api', `repos/${repository}/pages`, '--method', 'PUT', '--input', '-'], {
     input: JSON.stringify({ build_type: 'legacy', source: { branch: 'gh-pages', path: '/' } }), stdio: ['pipe', 'ignore', 'inherit'],
   });
+  execFileSync('gh', ['api', `repos/${repository}/pages/builds`, '--method', 'POST', '--silent'], { stdio: 'inherit' });
   console.log(`Frontend published: https://${match[1]}.github.io/${match[2]}/`);
 } finally {
   await rm(temporary, { recursive: true, force: true });
