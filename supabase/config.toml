@@ -1,0 +1,7 @@
+project_id = "between-us"
+
+[functions.game]
+verify_jwt = false
+
+[functions.audio]
+verify_jwt = false
